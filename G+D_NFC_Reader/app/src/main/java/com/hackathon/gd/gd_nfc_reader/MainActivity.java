@@ -1,6 +1,7 @@
 package com.hackathon.gd.gd_nfc_reader;
 
 import android.content.Intent;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (savedInstanceState == null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            CardReaderFragment fragment = new CardReaderFragment();
+            //transaction.replace(R.id.fragment_card_reader, fragment);
+            transaction.commit();
+        }
     }
 
     /** Called when the user taps the Send button */
